@@ -1,0 +1,261 @@
+-- Easy Hub:
+
+
+local Main = Instance.new("ScreenGui")
+local EasyHub = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local nfJump = Instance.new("TextButton")
+local TextButton = Instance.new("TextButton")
+local TextButton_2 = Instance.new("TextButton")
+local TextButton_3 = Instance.new("TextButton")
+
+
+Main.Name = "Main"
+Main.Parent = game.CoreGui
+Main.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+EasyHub.Name = "Easy Hub"
+EasyHub.Parent = Main
+EasyHub.BackgroundColor3 = Color3.fromRGB(0, 0, 53)
+EasyHub.BorderColor3 = Color3.fromRGB(0, 0, 118)
+EasyHub.Position = UDim2.new(0.0417941026, 0, 0.176853046, 0)
+EasyHub.Size = UDim2.new(0, 118, 0, 148)
+EasyHub.Active = true
+EasyHub.Draggable = false
+
+TextLabel.Parent = EasyHub
+TextLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 53)
+TextLabel.Position = UDim2.new(-0.00014366582, 0, -0.0126217231, 0)
+TextLabel.Size = UDim2.new(0, 117, 0, 23)
+TextLabel.Font = Enum.Font.Cartoon
+TextLabel.Text = "Easy Hub"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14.000
+TextLabel.TextWrapped = true
+
+nfJump.Name = "İnf Jump"
+nfJump.Parent = EasyHub
+nfJump.BackgroundColor3 = Color3.fromRGB(0, 0, 53)
+nfJump.Position = UDim2.new(0, -1, 0, 30)
+nfJump.Size = UDim2.new(0, 117, 0, 23)
+nfJump.Font = Enum.Font.Cartoon
+nfJump.Text = "İnf Jump"
+nfJump.TextColor3 = Color3.fromRGB(255, 255, 255)
+nfJump.TextScaled = true
+nfJump.TextSize = 14.000
+nfJump.TextWrapped = true
+nfJump.MouseButton1Down:connect(function()
+    local Player = game:GetService'Players'.LocalPlayer;
+    local UIS = game:GetService'UserInputService';
+
+    _G.JumpHeight = 50;
+
+    function Action(Object, Function) if Object ~= nil then Function(Object); end end
+
+    UIS.InputBegan:connect(function(UserInput)
+        if UserInput.UserInputType == Enum.UserInputType.Keyboard and UserInput.KeyCode == Enum.KeyCode.Space then
+            Action(Player.Character.Humanoid, function(self)
+                if self:GetState() == Enum.HumanoidStateType.Jumping or self:GetState() == Enum.HumanoidStateType.Freefall then
+                    Action(self.Parent.HumanoidRootPart, function(self)
+                        self.Velocity = Vector3.new(0, _G.JumpHeight, 0);
+                    end)
+                end
+            end)
+        end
+    end)
+end)
+
+TextButton.Parent = EasyHub
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 53)
+TextButton.Position = UDim2.new(0, 0, 0, 88)
+TextButton.Size = UDim2.new(0, 117, 0, 23)
+TextButton.Font = Enum.Font.Cartoon
+TextButton.Text = "Esp"
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.TextScaled = true
+TextButton.TextSize = 14.000
+TextButton.TextWrapped = true
+TextButton.MouseButton1Down:connect(function()
+
+    --- Tut
+
+    local esp_settings = { ---- table for esp settings 
+        textsize = 8,
+        colour = 255,255,255
+    }
+
+    local gui = Instance.new("BillboardGui")
+    local esp = Instance.new("TextLabel",gui) ---- new instances to make the billboard gui and the textlabel
+
+
+
+    gui.Name = "Cracked esp"; ---- properties of the esp
+    gui.ResetOnSpawn = false
+    gui.AlwaysOnTop = true;
+    gui.LightInfluence = 0;
+    gui.Size = UDim2.new(1.75, 0, 1.75, 0);
+    esp.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+    esp.Text = ""
+    esp.Size = UDim2.new(0.0001, 0.00001, 0.0001, 0.00001);
+    esp.BorderSizePixel = 4;
+    esp.BorderColor3 = Color3.new(esp_settings.colour)
+    esp.BorderSizePixel = 0
+    esp.Font = "GothamSemibold"
+    esp.TextSize = esp_settings.textsize
+    esp.TextColor3 = Color3.fromRGB(esp_settings.colour) -- text colour
+
+    game:GetService("RunService").RenderStepped:Connect(function() ---- loops faster than a while loop :)
+        for i,v in pairs (game:GetService("Players"):GetPlayers()) do
+            if v ~= game:GetService("Players").LocalPlayer and v.Character.Head:FindFirstChild("Cracked esp")==nil and v.TeamColor ~= game:GetService("Players").LocalPlayer.TeamColor then -- craeting checks for team check, local player etc
+                esp.Text = "{"..v.Name.."}"
+                gui:Clone().Parent = v.Character.Head
+            end
+        end
+    end)
+end)
+
+TextButton_2.Parent = EasyHub
+TextButton_2.BackgroundColor3 = Color3.fromRGB(0, 0, 53)
+TextButton_2.Position = UDim2.new(0, 0, 0, 118)
+TextButton_2.Size = UDim2.new(0, 117, 0, 23)
+TextButton_2.Font = Enum.Font.Cartoon
+TextButton_2.Text = "Left Aimbot"
+TextButton_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton_2.TextScaled = true
+TextButton_2.TextSize = 14.000
+TextButton_2.TextWrapped = true
+
+TextButton_3.Parent = EasyHub
+TextButton_3.BackgroundColor3 = Color3.fromRGB(0, 0, 53)
+TextButton_3.Position = UDim2.new(0, -1, 0, 58)
+TextButton_3.Size = UDim2.new(0, 117, 0, 23)
+TextButton_3.Font = Enum.Font.Cartoon
+TextButton_3.Text = "KillAl"
+TextButton_3.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton_3.TextScaled = true
+TextButton_3.TextSize = 14.000
+TextButton_3.TextWrapped = true
+TextButton_3.MouseButton1Down:connect(function()
+    game.Players.LocalPlayer:GetMouse().KeyDown:Connect(function(k)
+        if k == "e" then
+            local Gun = game.ReplicatedStorage.Weapons:FindFirstChild(game.Players.LocalPlayer.NRPBS.EquippedTool.Value);
+            local Crit = math.random() > .6 and true or false;
+            for i,v in pairs(game.Players:GetPlayers()) do
+                if v and v.Character and v.Character:FindFirstChild("Head") then
+                    local Distance = (game.Players.LocalPlayer.Character.Head.Position - v.Character.Head.Position).magnitude
+                    for i  = 1,10 do
+                        game.ReplicatedStorage.Events.HitPart:FireServer(v.Character.Head,
+                            v.Character.Head.Position + Vector3.new(math.random(), math.random(), math.random()),
+                            Gun.Name,
+                            Crit and 2 or 1,
+                            Distance,
+                            Backstab,
+                            Crit,
+                            false,
+                            1,
+                            false,
+                            Gun.FireRate.Value,
+                            Gun.ReloadTime.Value,
+                            Gun.Ammo.Value,
+                            Gun.StoredAmmo.Value,
+                            Gun.Bullets.Value,
+                            Gun.EquipTime.Value,
+                            Gun.RecoilControl.Value,
+                            Gun.Auto.Value,
+                            Gun['Speed%'].Value,
+                            game.ReplicatedStorage.wkspc.DistributedTime.Value);
+                    end
+                end
+            end
+        end
+    end)
+end)
+
+-- Scripts:
+
+local function PNJBU_fake_script() -- nfJump.LocalScript 
+    local script = Instance.new('LocalScript', nfJump)
+
+    local function RZQPGT_fake_script() -- INFJUMP.LocalScript 
+        local script = Instance.new('LocalScript', INFJUMP)
+    
+        local function TKDWQ_fake_script() -- INFJUMP.LocalScript 
+            local script = Instance.new('LocalScript', INFJUMP)
+    
+            function zigzag(X) return math.acos(math.cos(X*math.pi))/math.pi end
+    
+            counter = 0
+    
+            while wait(0.1)do
+    
+    
+                counter = counter + 0.01
+            end
+        end
+        coroutine.wrap(TKDWQ_fake_script)()
+    end
+    coroutine.wrap(RZQPGT_fake_script)()
+    
+end
+coroutine.wrap(PNJBU_fake_script)()
+local function GEOE_fake_script() -- TextButton_2.LocalScript 
+    local script = Instance.new('LocalScript', TextButton_2)
+
+    local localPlayer = game:GetService("Players").LocalPlayer
+    local mouse = localPlayer:GetMouse()
+    local camera = game.Workspace.CurrentCamera
+    local team = true
+    
+    local function closestplayer()
+        local target = nil
+        local dist = math.huge
+        for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+            if v.Name ~= localPlayer.Name then
+                if v.Character and v.Character:FindFirstChild("Humanoid") and v.Character.Humanoid.Health ~= 0 and v.Character:FindFirstChild("HumanoidRootPart") and team and v.TeamColor ~= localPlayer.TeamColor then
+                    local magnitude = camera:WorldToScreenPoint(v.Character.HumanoidRootPart.Position)
+                    local check = (Vector2.new(mouse.X,mouse.Y)-Vector2.new(magnitude.X,magnitude.Y)).magnitude
+    
+                    if check < dist then
+                        target  = v
+                        dist = check
+                    end
+                elseif v.Character and v.Character:FindFirstChild("Humanoid") and v.Character.Humanoid.Health ~= 0 and v.Character:FindFirstChild("HumanoidRootPart") and v.Character:FindFirstChild("Head") and team == false then
+                    local magnitude = camera:WorldToScreenPoint(v.Character.HumanoidRootPart.Position)
+                    local check = (Vector2.new(mouse.X,mouse.Y)-Vector2.new(magnitude.X,magnitude.Y)).magnitude
+    
+                    if check < dist then
+                        target  = v
+                        dist = check
+                    end
+                end
+            end
+        end
+    
+        return target 
+    end
+    
+    
+    local camera = game.Workspace.CurrentCamera
+    local UIS = game:GetService("UserInputService")
+    local aim = false
+    
+    game:GetService("RunService").RenderStepped:Connect(function()
+        if aim then
+            camera.CFrame = CFrame.new(camera.CFrame.Position,closestplayer().Character.Head.Position)
+        end
+    end)
+    
+    UIS.InputBegan:Connect(function(inp)
+        if inp.UserInputType == Enum.UserInputType.MouseButton2 then
+            aim = true
+        end
+    end)
+    
+    UIS.InputEnded:Connect(function(inp)
+        if inp.UserInputType == Enum.UserInputType.MouseButton2 then
+            aim = false
+        end
+    end)
+end
+coroutine.wrap(GEOE_fake_script)()
